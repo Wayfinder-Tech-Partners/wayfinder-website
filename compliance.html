@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance Support — Wayfinder Technology Partners</title>
+  <meta name="description" content="See exactly which compliance frameworks Wayfinder supports at each service tier — HIPAA, PCI, Cyber Insurance, NIST 800-171, and CIS Controls." />
+
+  <meta property="og:title"       content="Compliance Support — Wayfinder Technology Partners" />
+  <meta property="og:description" content="Transparent compliance coverage mapped to every service tier." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://wayfindertechpartners.com/compliance.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* Compliance page specific styles */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .framework-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .framework-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .framework-card.basic-plus::before    { background: var(--color-basic); }
+    .framework-card.standard-plus::before { background: var(--color-standard); }
+    .framework-card.premium-only::before  { background: var(--color-premium); }
+
+    .framework-tier-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .basic-plus    .framework-tier-tag { background: #eff6ff; color: var(--color-basic); }
+    .standard-plus .framework-tier-tag { background: #f5f3ff; color: var(--color-standard); }
+    .premium-only  .framework-tier-tag { background: #fffbeb; color: var(--color-premium); }
+
+    .framework-card h3 { margin-bottom: 0.4rem; font-size: 1.15rem; }
+    .framework-card .framework-desc { font-size: 0.875rem; margin-bottom: 1.25rem; }
+
+    .control-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .control-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.825rem;
+      color: var(--color-text);
+    }
+
+    .control-check {
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      width: 16px;
+      text-align: center;
+    }
+
+    .control-check.managed  { color: #16a34a; }
+    .control-check.partial  { color: #d97706; }
+    .control-check.advised  { color: #6366f1; }
+
+    .control-label { flex: 1; }
+    .control-how {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      display: block;
+    }
+
+    /* Controls legend */
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding: 1rem 1.25rem;
+      background: var(--color-section-alt);
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--color-text);
+    }
+
+    /* Coverage table */
+    .coverage-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .coverage-table th,
+    .coverage-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .coverage-table thead th {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .coverage-table thead th:first-child { border-radius: var(--radius) 0 0 0; }
+    .coverage-table thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .coverage-table tr:nth-child(even) td { background: var(--color-section-alt); }
+    .coverage-table tr:last-child td { border-bottom: none; }
+    .coverage-table td:first-child { font-weight: 600; }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #f59e0b;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .disclaimer p {
+      font-size: 0.875rem;
+      color: #78350f;
+      margin: 0;
+    }
+
+    .disclaimer strong { color: #451a03; }
+
+    @media (max-width: 1024px) {
+      .framework-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .framework-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Wayfinder Technology Partners — Home">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="14" stroke="#102A43" stroke-width="2.2"/>
+        <path d="M18 31 A14 14 0 0 1 6.8 8.8" stroke="#2CB1BC" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+        <path d="M18 18 L13 28 L18 5 L23 28 Z" fill="#2CB1BC"/>
+        <path d="M18 18 L23 28 L18 5 Z" fill="#102A43"/>
+        <path d="M18 5 L19.8 3 L21.5 5 L19.8 7 Z" fill="#F59E0B"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Wayfinder</span>
+        <span class="nav-logo-sub">Technology Partners</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="compliance.html" class="active">Compliance</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="contact.html" class="btn btn-primary nav-cta">Free 30-Min Call</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Free 30-Min Call</a>
+</div>
+
+<main>
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="compliance-heading">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Compliance Support</span>
+      <h1 id="compliance-heading">Know exactly what we cover — and what we don't.</h1>
+      <p>Compliance frameworks are complex. We believe in being specific about which controls we actively manage at each service tier, so you can make informed decisions without surprises at audit time.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT COMPLIANCE SUPPORT MEANS
+       ============================================================ -->
+  <section class="section" aria-labelledby="what-it-means-heading">
+    <div class="container" style="max-width:860px;">
+      <div class="section-header" style="text-align:left; max-width:100%; margin-bottom:2rem;">
+        <span class="eyebrow" style="display:inline-block; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-accent); margin-bottom:0.75rem;">What This Means</span>
+        <h2 id="what-it-means-heading">Compliance support is not the same as compliance certification.</h2>
+      </div>
+      <div class="grid-2" style="gap:2rem; align-items:start;">
+        <div>
+          <p>When Wayfinder says we "support" a compliance framework, we mean we actively manage the technical controls that fall within our scope — the tools, configurations, access policies, logging, and security stack that your auditor or insurer will ask about.</p>
+          <p>What we don't do: certify you, act as your compliance officer, write your policies from scratch, or guarantee audit outcomes. Compliance involves people, processes, and technology — we own the technology layer.</p>
+        </div>
+        <div>
+          <div style="background:var(--color-section-alt); border-radius:var(--radius-lg); padding:1.75rem;">
+            <h4 style="margin-bottom:1rem;">What we actively manage</h4>
+            <ul style="display:flex; flex-direction:column; gap:0.6rem;">
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:#16a34a; font-weight:700;">✓</span> Technical security controls in your M365 environment</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:#16a34a; font-weight:700;">✓</span> Endpoint protection, patching, and monitoring</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:#16a34a; font-weight:700;">✓</span> Identity, access, and conditional access policies</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:#16a34a; font-weight:700;">✓</span> Logging, alerting, and incident response (Premium)</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:#16a34a; font-weight:700;">✓</span> Backup, DR, and business continuity (per tier)</li>
+            </ul>
+            <h4 style="margin-top:1.25rem; margin-bottom:1rem;">What remains your responsibility</h4>
+            <ul style="display:flex; flex-direction:column; gap:0.6rem;">
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:var(--color-text-muted); font-weight:700;">—</span> Physical security of your office and devices</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:var(--color-text-muted); font-weight:700;">—</span> Staff training and policy enforcement (Standard: advisory; Premium: KnowBe4)</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:var(--color-text-muted); font-weight:700;">—</span> Business Associate Agreements with other vendors</li>
+              <li style="display:flex; gap:0.6rem; font-size:0.875rem;"><span style="color:var(--color-text-muted); font-weight:700;">—</span> Compliance officer / DPO role</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <p><strong>Important:</strong> Compliance framework support is included in Standard and Premium tiers and is not guaranteed. Our role is to manage the technical controls that fall within our scope of service. Achieving and maintaining certification or regulatory compliance is a shared responsibility between your organization and your service providers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMPLIANCE FINDER TOOL
+       ============================================================ -->
+  <section id="compliance-finder" class="section" aria-labelledby="finder-heading">
+    <div class="container" style="max-width:800px;">
+      <div class="section-header">
+        <span class="eyebrow">Compliance Finder</span>
+        <h2 id="finder-heading">Find your compliance requirements in 60 seconds.</h2>
+        <p>Answer four questions about your business and we'll identify which frameworks apply — and which Wayfinder tier covers them.</p>
+      </div>
+
+      <div class="finder-tool" role="region" aria-label="Compliance tier finder tool">
+
+        <!-- Progress dots -->
+        <div class="finder-progress" aria-hidden="true">
+          <div class="finder-progress-dot active" id="dot-1"></div>
+          <div class="finder-progress-dot" id="dot-2"></div>
+          <div class="finder-progress-dot" id="dot-3"></div>
+          <div class="finder-progress-dot" id="dot-4"></div>
+        </div>
+
+        <!-- Step 1: Industry -->
+        <div class="finder-step active" id="step-1" aria-live="polite">
+          <div class="finder-step-label">Question 1 of 4</div>
+          <h3>What industry is your business in?</h3>
+          <div class="finder-options">
+            <button class="finder-option" data-step="1" data-value="healthcare" type="button">🏥 Healthcare or medical services</button>
+            <button class="finder-option" data-step="1" data-value="financial" type="button">⚖️ Financial services or legal</button>
+            <button class="finder-option" data-step="1" data-value="defense" type="button">🏛️ Defense or government contracting</button>
+            <button class="finder-option" data-step="1" data-value="general" type="button">🏢 General business</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Cyber Insurance -->
+        <div class="finder-step" id="step-2" aria-live="polite">
+          <div class="finder-step-label">Question 2 of 4</div>
+          <h3>Do you carry or need to qualify for cyber liability insurance?</h3>
+          <div class="finder-options">
+            <button class="finder-option" data-step="2" data-value="yes" type="button">✅ Yes — currently required or in process</button>
+            <button class="finder-option" data-step="2" data-value="planning" type="button">📋 Planning to get it soon</button>
+            <button class="finder-option" data-step="2" data-value="no" type="button">❌ No and not required right now</button>
+            <button class="finder-option" data-step="2" data-value="unsure" type="button">🤷 Not sure</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Cardholder / sensitive data -->
+        <div class="finder-step" id="step-3" aria-live="polite">
+          <div class="finder-step-label">Question 3 of 4</div>
+          <h3>Does your business process, store, or transmit sensitive regulated data?</h3>
+          <div class="finder-options">
+            <button class="finder-option" data-step="3" data-value="phi" type="button">🏥 Patient health information (PHI)</button>
+            <button class="finder-option" data-step="3" data-value="cardholder" type="button">💳 Credit card or payment data (PCI)</button>
+            <button class="finder-option" data-step="3" data-value="cui" type="button">🔒 Controlled Unclassified Info (CUI)</button>
+            <button class="finder-option" data-step="3" data-value="none" type="button">📄 Standard business data only</button>
+          </div>
+        </div>
+
+        <!-- Step 4: User count -->
+        <div class="finder-step" id="step-4" aria-live="polite">
+          <div class="finder-step-label">Question 4 of 4</div>
+          <h3>How many users does your business have?</h3>
+          <div class="finder-options">
+            <button class="finder-option" data-step="4" data-value="1-5" type="button">👤 1–5 users</button>
+            <button class="finder-option" data-step="4" data-value="6-10" type="button">👥 6–10 users</button>
+            <button class="finder-option" data-step="4" data-value="11-15" type="button">👥 11–15 users</button>
+            <button class="finder-option" data-step="4" data-value="16-20" type="button">👥 16–20 users</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="finder-result" id="finder-result" aria-live="polite">
+          <div id="result-badge-wrap"></div>
+          <h3 id="result-title" style="margin-bottom:0.5rem;"></h3>
+          <p id="result-desc" style="max-width:560px; margin:0 auto 1rem;"></p>
+          <div class="finder-result-frameworks" id="result-frameworks"></div>
+          <p style="font-size:0.8rem; color:var(--color-text-muted); margin-top:0.75rem;" id="result-note"></p>
+          <div style="margin-top:1.75rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+            <a href="contact.html" class="btn btn-primary">Talk to Us About This Plan</a>
+            <a id="result-services-link" href="services.html" class="btn btn-outline-dark">See Full Plan Details</a>
+          </div>
+          <button class="finder-restart" id="finder-restart" type="button">Start over</button>
+        </div>
+
+      </div><!-- /.finder-tool -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FRAMEWORK CARDS
+       ============================================================ -->
+  <section class="section section-alt" aria-labelledby="frameworks-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Framework Coverage</span>
+        <h2 id="frameworks-heading">Which frameworks we support, and at what tier</h2>
+        <p>Each framework below maps to the specific controls Wayfinder actively manages. "Supported" means we handle the technical layer — not that we're your compliance team.</p>
+      </div>
+
+      <div class="legend" role="note" aria-label="Legend">
+        <div class="legend-item"><span style="color:#16a34a; font-weight:700; font-size:0.9rem;">✓</span> Wayfinder manages this control</div>
+        <div class="legend-item"><span style="color:#d97706; font-weight:700; font-size:0.9rem;">◑</span> Partial — Wayfinder manages technical component, client manages remainder</div>
+        <div class="legend-item"><span style="color:#6366f1; font-weight:700; font-size:0.9rem;">i</span> Advisory only — guidance provided, implementation is client-led</div>
+      </div>
+
+      <div class="framework-grid">
+
+        <!-- Cyber Insurance — Basic+ -->
+        <div class="framework-card basic-plus">
+          <span class="framework-tier-tag">Basic &amp; above</span>
+          <h3>Cyber Insurance Readiness</h3>
+          <p class="framework-desc">Most cyber insurers require a documented set of technical controls. Wayfinder's Basic tier satisfies the majority of standard requirements.</p>
+          <div class="control-list">
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Multi-factor authentication
+                <span class="control-how">Entra ID MFA enforced via conditional access</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Endpoint protection (EDR)
+                <span class="control-how">Microsoft Defender for Endpoint</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Email security
+                <span class="control-how">Defender for Office 365, SPF/DKIM/DMARC</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">OS patching &amp; vulnerability management
+                <span class="control-how">RMM-managed patching with reporting</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Backup &amp; business continuity
+                <span class="control-how">Network failover (Basic); full backup added at Standard</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">DNS filtering (Standard+)
+                <span class="control-how">DNSFilter blocks malicious domains</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check partial">◑</span>
+              <div class="control-label">Incident response plan
+                <span class="control-how">Plan provided at Premium; advisory at Standard</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HIPAA — Standard+ -->
+        <div class="framework-card standard-plus">
+          <span class="framework-tier-tag">Standard &amp; above</span>
+          <h3>HIPAA</h3>
+          <p class="framework-desc">The technical and some administrative safeguards of HIPAA fall within our scope at Standard tier. Physical safeguards remain the client's responsibility.</p>
+          <div class="control-list">
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Access control
+                <span class="control-how">Entra ID P2, role-based access, conditional access</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Audit controls &amp; logging
+                <span class="control-how">Defender audit logs, Sentinel SIEM (Premium)</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Data integrity &amp; encryption
+                <span class="control-how">Bitlocker, TLS in M365, OneDrive versioning</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Transmission security
+                <span class="control-how">TLS enforced throughout M365</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Email &amp; file backup
+                <span class="control-how">Exchange and SharePoint/OneDrive backup</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check partial">◑</span>
+              <div class="control-label">Workforce training
+                <span class="control-how">KnowBe4 managed at Premium; advisory at Standard</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check advised">i</span>
+              <div class="control-label">Physical safeguards
+                <span class="control-how">Client responsibility; we provide guidance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PCI DSS — Standard+ -->
+        <div class="framework-card standard-plus">
+          <span class="framework-tier-tag">Standard &amp; above</span>
+          <h3>PCI DSS</h3>
+          <p class="framework-desc">Wayfinder manages the network security, access control, monitoring, and vulnerability management requirements within our scope. Cardholder data environment scoping remains the client's responsibility.</p>
+          <div class="control-list">
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Access control &amp; least privilege
+                <span class="control-how">Entra ID P2, PIM, conditional access</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Vulnerability management
+                <span class="control-how">Defender vulnerability analytics, patching</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Monitoring &amp; logging
+                <span class="control-how">Huntress MDR, Defender; Sentinel at Premium</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">DNS &amp; web filtering
+                <span class="control-how">DNSFilter</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check partial">◑</span>
+              <div class="control-label">Network segmentation
+                <span class="control-how">Advisory at Standard; managed as network add-on at Premium</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check partial">◑</span>
+              <div class="control-label">Security awareness training
+                <span class="control-how">KnowBe4 managed at Premium; advisory at Standard</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check advised">i</span>
+              <div class="control-label">CDE scoping &amp; QSA engagement
+                <span class="control-how">Client responsibility; we can advise and refer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NIST 800-171 — Premium -->
+        <div class="framework-card premium-only">
+          <span class="framework-tier-tag">Premium only</span>
+          <h3>NIST 800-171</h3>
+          <p class="framework-desc">Required for businesses handling Controlled Unclassified Information (CUI) — common in defense contracting, government supply chains, and regulated industries. Premium's full stack covers the majority of the 110 controls.</p>
+          <div class="control-list">
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Access control (AC family)
+                <span class="control-how">Entra ID P2, PIM, conditional access, access reviews</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Audit &amp; accountability (AU family)
+                <span class="control-how">Microsoft Sentinel SIEM, central log aggregation</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Incident response (IR family)
+                <span class="control-how">Formal IR plan + Sentinel automated playbooks</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">Risk assessment (RA family)
+                <span class="control-how">Defender vulnerability management, attack surface mgmt</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">System &amp; communications protection (SC)
+                <span class="control-how">ThreatLocker, Defender, network segmentation (add-on)</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check partial">◑</span>
+              <div class="control-label">Awareness &amp; training (AT family)
+                <span class="control-how">KnowBe4 managed; role-specific training advisory</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check advised">i</span>
+              <div class="control-label">Physical protection (PE family)
+                <span class="control-how">Client responsibility; guidance provided</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CIS Controls — Premium -->
+        <div class="framework-card premium-only">
+          <span class="framework-tier-tag">Premium only</span>
+          <h3>CIS Controls v8</h3>
+          <p class="framework-desc">The CIS Controls are a prioritized set of 18 safeguards. Wayfinder's Premium stack directly maps to Implementation Group 2 (IG2) — appropriate for most SMBs handling sensitive data.</p>
+          <div class="control-list">
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 1 &amp; 2 — Inventory (hardware &amp; software)
+                <span class="control-how">Intune, ThreatLocker application allowlisting</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 4 — Secure configuration
+                <span class="control-how">Intune security baselines, Autopilot</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 5 &amp; 6 — Account &amp; access management
+                <span class="control-how">Entra ID P2, PIM, conditional access</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 7 — Continuous vulnerability management
+                <span class="control-how">Defender for Endpoint Plan 2, patching</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 8 — Audit log management
+                <span class="control-how">Microsoft Sentinel, long-term retention</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 9 — Email &amp; web browser protection
+                <span class="control-how">Defender for Office 365, DNSFilter, Mimecast</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 10 — Malware defense
+                <span class="control-how">ThreatLocker, Defender, Huntress</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 11 — Data recovery
+                <span class="control-how">Datto backup &amp; disaster recovery</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 14 — Security awareness training
+                <span class="control-how">KnowBe4 — managed phishing simulations &amp; training</span>
+              </div>
+            </div>
+            <div class="control-item">
+              <span class="control-check managed">✓</span>
+              <div class="control-label">CIS 17 — Incident response management
+                <span class="control-how">Formal IR plan, Sentinel playbooks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Framework comparison summary card -->
+        <div style="background: var(--color-primary); border-radius: var(--radius-lg); padding: 1.75rem; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <span style="display:inline-block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-highlight); margin-bottom:1rem;">Summary</span>
+            <h3 style="color:white; margin-bottom:1rem;">Which tier do you need?</h3>
+            <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1.5rem;">
+              <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:1rem;">
+                <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--color-highlight); margin-bottom:0.4rem;">Basic</div>
+                <div style="font-size:0.875rem; color:rgba(255,255,255,0.85);">Cyber Insurance readiness — essential controls for most insurers</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:1rem;">
+                <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#c4b5fd; margin-bottom:0.4rem;">Standard</div>
+                <div style="font-size:0.875rem; color:rgba(255,255,255,0.85);">HIPAA + PCI + Cyber Insurance — healthcare, payments, regulated industries</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.07); border-radius:var(--radius); padding:1rem;">
+                <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#fcd34d; margin-bottom:0.4rem;">Premium</div>
+                <div style="font-size:0.875rem; color:rgba(255,255,255,0.85);">All frameworks + NIST 800-171 + CIS IG2 — defense, government supply chain, high-risk environments</div>
+              </div>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-outline" style="justify-content:center;">Talk to us about your requirements</a>
+        </div>
+
+      </div><!-- /.framework-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COVERAGE SUMMARY TABLE
+       ============================================================ -->
+  <section class="section" aria-labelledby="coverage-table-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">At a Glance</span>
+        <h2 id="coverage-table-heading">Framework coverage by tier</h2>
+      </div>
+
+      <div class="comparison-table-wrap">
+        <table class="coverage-table" aria-label="Compliance framework coverage by tier">
+          <thead>
+            <tr>
+              <th scope="col">Framework</th>
+              <th scope="col">Basic</th>
+              <th scope="col">Standard</th>
+              <th scope="col">Premium</th>
+              <th scope="col">Who needs this</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cyber Insurance requirements</td>
+              <td class="check">✓ Supported</td>
+              <td class="check">✓ Supported</td>
+              <td class="check">✓ Supported</td>
+              <td style="font-size:0.825rem; color:var(--color-text-muted);">Any business carrying cyber liability insurance</td>
+            </tr>
+            <tr>
+              <td>HIPAA</td>
+              <td class="dash">—</td>
+              <td class="check">✓ Supported</td>
+              <td class="check">✓ Supported</td>
+              <td style="font-size:0.825rem; color:var(--color-text-muted);">Healthcare providers, business associates</td>
+            </tr>
+            <tr>
+              <td>PCI DSS</td>
+              <td class="dash">—</td>
+              <td class="check">✓ Supported</td>
+              <td class="check">✓ Supported</td>
+              <td style="font-size:0.825rem; color:var(--color-text-muted);">Businesses that accept credit card payments</td>
+            </tr>
+            <tr>
+              <td>NIST 800-171</td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="check">✓ Supported</td>
+              <td style="font-size:0.825rem; color:var(--color-text-muted);">Defense contractors, federal supply chain (CUI)</td>
+            </tr>
+            <tr>
+              <td>CIS Controls v8 (IG2)</td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="check">✓ Supported</td>
+              <td style="font-size:0.825rem; color:var(--color-text-muted);">Any organization wanting a proven security baseline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" aria-labelledby="compliance-cta-heading">
+    <div class="container" style="max-width:700px;">
+      <h2 id="compliance-cta-heading">Not sure which frameworks apply to your business?</h2>
+      <p>Book a free 30-minute call. We'll review your industry, your insurers' requirements, and any regulatory obligations — and tell you exactly what you need.</p>
+      <div class="cta-banner-actions">
+        <a href="contact.html" class="btn btn-white">Book a Free 30-Min Call</a>
+        <a href="services.html" class="btn btn-outline">View Service Tiers</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.4)" stroke-width="2.2"/>
+            <path d="M18 31 A14 14 0 0 1 6.8 8.8" stroke="#2CB1BC" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <path d="M18 18 L13 28 L18 5 L23 28 Z" fill="#2CB1BC"/>
+            <path d="M18 18 L23 28 L18 5 Z" fill="rgba(255,255,255,0.6)"/>
+            <path d="M18 5 L19.8 3 L21.5 5 L19.8 7 Z" fill="#F59E0B"/>
+          </svg>
+          <div>
+            <span class="footer-brand-name">Wayfinder</span>
+            <span class="footer-brand-sub">Technology Partners</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Enterprise-grade IT management and cybersecurity for growing businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul role="list">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://linkedin.com/company/wayfinder-tech-partners" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul role="list">
+          <li><a href="services.html#basic">Basic</a></li>
+          <li><a href="services.html#standard">Standard</a></li>
+          <li><a href="services.html#premium">Premium</a></li>
+          <li><a href="compliance.html">Compliance</a></li>
+          <li><a href="compliance.html#compliance-finder">Compliance Finder</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get Started</h5>
+        <ul role="list">
+          <li><a href="contact.html">Free 30-Min Call</a></li>
+          <li><a href="contact.html">Request a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Wayfinder Technology Partners. All rights reserved.</p>
+      <nav class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function() {
+  var answers = {};
+
+  function goToStep(n) {
+    document.querySelectorAll('.finder-step').forEach(function(s){ s.classList.remove('active'); });
+    document.getElementById('finder-result').classList.remove('active');
+    var step = document.getElementById('step-' + n);
+    if (step) step.classList.add('active');
+    updateDots(n);
+  }
+
+  function updateDots(activeStep) {
+    for (var i = 1; i <= 4; i++) {
+      var dot = document.getElementById('dot-' + i);
+      dot.classList.remove('active','done');
+      if (i < activeStep) dot.classList.add('done');
+      else if (i === activeStep) dot.classList.add('active');
+    }
+  }
+
+  function showResult() {
+    document.querySelectorAll('.finder-step').forEach(function(s){ s.classList.remove('active'); });
+    document.getElementById('finder-result').classList.add('active');
+    for (var i = 1; i <= 4; i++) {
+      var dot = document.getElementById('dot-' + i);
+      dot.classList.remove('active');
+      dot.classList.add('done');
+    }
+
+    var tier = calcTier();
+    var data = getTierData(tier);
+
+    var badge = document.getElementById('result-badge-wrap');
+    badge.innerHTML = '<span class="finder-result-badge ' + tier + '">' + data.label + '</span>';
+
+    document.getElementById('result-title').textContent = data.title;
+    document.getElementById('result-desc').textContent = data.desc;
+    document.getElementById('result-note').textContent = data.note;
+
+    var fwWrap = document.getElementById('result-frameworks');
+    fwWrap.innerHTML = '';
+    data.frameworks.forEach(function(fw) {
+      var tag = document.createElement('span');
+      tag.className = 'finder-fw-tag';
+      tag.textContent = fw;
+      fwWrap.appendChild(tag);
+    });
+
+    document.getElementById('result-services-link').href = 'services.html#' + tier;
+  }
+
+  function calcTier() {
+    var ind = answers[1] || 'general';
+    var ins = answers[2] || 'no';
+    var data = answers[3] || 'none';
+    var users = answers[4] || '1-5';
+
+    // Premium triggers
+    if (ind === 'defense' || data === 'cui') return 'premium';
+    if (data === 'phi' && (ins === 'yes' || ind === 'healthcare')) return 'premium';
+    if (users === '16-20' && (data === 'phi' || data === 'cardholder')) return 'premium';
+
+    // Standard triggers
+    if (ind === 'healthcare' || ind === 'financial') return 'standard';
+    if (data === 'phi' || data === 'cardholder') return 'standard';
+    if (ins === 'yes' || ins === 'planning') return 'standard';
+
+    // Basic
+    return 'basic';
+  }
+
+  function getTierData(tier) {
+    var map = {
+      basic: {
+        label: 'Recommended: Basic',
+        title: 'Basic tier covers your compliance needs.',
+        desc: 'Your business profile points to Cyber Insurance readiness as the primary requirement. Basic tier\'s Microsoft 365 Business Premium stack — with MFA, EDR, email security, patching, and business continuity — satisfies the standard technical controls most insurers require.',
+        frameworks: ['Cyber Insurance Readiness'],
+        note: 'Note: If your compliance needs change (new insurance requirements, industry regulations), upgrading to Standard is straightforward.'
+      },
+      standard: {
+        label: 'Recommended: Standard',
+        title: 'Standard tier matches your compliance profile.',
+        desc: 'Your business handles regulated data or operates in a compliance-sensitive industry. Standard tier adds Entra ID P2, Huntress MDR, DNSFilter, advanced Microsoft security licensing, and email/file backups — the controls HIPAA, PCI, and cyber insurers require.',
+        frameworks: ['Cyber Insurance', 'HIPAA (if healthcare)', 'PCI DSS (if payments)'],
+        note: 'Compliance support is included — not guaranteed. Achieving and maintaining certification is a shared responsibility between your organization and its service providers.'
+      },
+      premium: {
+        label: 'Recommended: Premium',
+        title: 'Premium tier is the right fit for your environment.',
+        desc: 'Your business handles highly regulated data or government-related work that requires the full compliance stack: Microsoft Sentinel SIEM, ThreatLocker, KnowBe4, Datto BCDR, Mimecast, formal DR and IR plans, and advanced audit logging.',
+        frameworks: ['Cyber Insurance', 'HIPAA', 'PCI DSS', 'NIST 800-171', 'CIS Controls v8 IG2'],
+        note: 'Premium requires a 3-month precontract consultation to ensure full environment understanding before service commitments are made.'
+      }
+    };
+    return map[tier];
+  }
+
+  // Attach click handlers to all option buttons
+  document.querySelectorAll('.finder-option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var step = parseInt(this.getAttribute('data-step'));
+      answers[step] = this.getAttribute('data-value');
+
+      // Highlight selection briefly, then advance
+      var opts = document.querySelectorAll('[data-step="' + step + '"]');
+      opts.forEach(function(o){ o.classList.remove('selected'); });
+      this.classList.add('selected');
+
+      setTimeout(function() {
+        if (step < 4) {
+          goToStep(step + 1);
+        } else {
+          showResult();
+        }
+      }, 200);
+    });
+  });
+
+  // Restart
+  document.getElementById('finder-restart').addEventListener('click', function() {
+    answers = {};
+    document.querySelectorAll('.finder-option').forEach(function(o){ o.classList.remove('selected'); });
+    goToStep(1);
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Wayfinder Technology Partners</title>
+  <meta name="description" content="Get in touch with Wayfinder Technology Partners. Tell us about your business and we'll recommend the right managed IT plan for you." />
+
+  <meta property="og:title"       content="Contact — Wayfinder Technology Partners" />
+  <meta property="og:description" content="Start a conversation with Wayfinder Technology Partners." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://wayfindertechpartners.com/contact.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Wayfinder Technology Partners — Home">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="14" stroke="#102A43" stroke-width="2.2"/>
+        <path d="M18 31 A14 14 0 0 1 6.8 8.8" stroke="#2CB1BC" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+        <path d="M18 18 L13 28 L18 5 L23 28 Z" fill="#2CB1BC"/>
+        <path d="M18 18 L23 28 L18 5 Z" fill="#102A43"/>
+        <path d="M18 5 L19.8 3 L21.5 5 L19.8 7 Z" fill="#F59E0B"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Wayfinder</span>
+        <span class="nav-logo-sub">Technology Partners</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="compliance.html">Compliance</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="contact.html" class="btn btn-primary nav-cta">Free 30-Min Call</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Free 30-Min Call</a>
+</div>
+
+<main>
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="contact-heading">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Get in Touch</span>
+      <h1 id="contact-heading">Let's start a conversation.</h1>
+      <p>Tell us about your business and what you're looking for. We'll get back to you within one business day.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT FORM + INFO
+       ============================================================ -->
+  <section class="section" aria-labelledby="form-heading">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Form -->
+        <div class="contact-form-wrap">
+          <h2 id="form-heading">Send us a message</h2>
+          <p>Fill in the details below and we'll be in touch. All fields marked <span style="color:var(--color-accent);">*</span> are required.</p>
+
+          <!--
+            TEMPLATE NOTE:
+            Replace "YOUR_FORM_ID" with your actual Formspree form ID.
+            Sign up free at https://formspree.io, create a new form,
+            and copy the form ID from the endpoint URL.
+          -->
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/xaqpewvd"
+            method="POST"
+            novalidate
+            aria-label="Contact form"
+          >
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="name">Full Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control"
+                  placeholder="Jane Smith"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Company Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  class="form-control"
+                  placeholder="Acme Corp"
+                  required
+                  autocomplete="organization"
+                />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="jane@acmecorp.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-control"
+                  placeholder="(555) 000-0000"
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="user-count">Approximate User Count <span aria-hidden="true">*</span></label>
+                <select id="user-count" name="user_count" class="form-control" required>
+                  <option value="" disabled selected>Select a range</option>
+                  <option value="1-5">1–5 users</option>
+                  <option value="6-10">6–10 users</option>
+                  <option value="11-25">11–25 users</option>
+                  <option value="26-50">26–50 users</option>
+                  <option value="51+">51+ users</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tier-interest">Plan Interest</label>
+                <select id="tier-interest" name="tier_interest" class="form-control">
+                  <option value="" disabled selected>Not sure yet</option>
+                  <option value="basic">Basic — $100/user/mo</option>
+                  <option value="standard">Standard — $150/user/mo</option>
+                  <option value="premium">Premium — $250/user/mo</option>
+                  <option value="not-sure">Not sure — help me decide</option>
+                  <option value="consulting">Standalone consulting only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your needs <span aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                placeholder="Describe your current IT situation, any pain points, compliance needs, or anything else that will help us prepare for our conversation..."
+                required
+              ></textarea>
+            </div>
+
+            <!-- Honeypot spam prevention -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <button type="submit" class="btn btn-primary btn-submit">
+              Send Message
+            </button>
+            <p class="form-note">We respond within one business day. Your information is never sold or shared.</p>
+          </form>
+
+          <!-- Success message (hidden until form submits) -->
+          <div
+            id="form-success"
+            role="alert"
+            aria-live="polite"
+            style="display:none; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:var(--radius-lg); padding:2rem; text-align:center;"
+          >
+            <div style="font-size:2rem; margin-bottom:0.75rem;" aria-hidden="true">✓</div>
+            <h3 style="color:#15803d; margin-bottom:0.5rem;">Message sent!</h3>
+            <p style="color:#166534; margin:0;">Thanks for reaching out. We'll be in touch within one business day.</p>
+          </div>
+        </div><!-- /.contact-form-wrap -->
+
+        <!-- Info sidebar -->
+        <aside class="contact-info" aria-label="Contact information">
+          <div class="contact-info-card">
+            <h3>Contact Information</h3>
+            <div class="contact-detail">
+              <span class="contact-detail-icon" aria-hidden="true">✉️</span>
+              <div class="contact-detail-text">
+                <strong>Email</strong>
+                <!-- TEMPLATE NOTE: Replace with actual contact email -->
+                <a href="mailto:contact@wayfindertechpartners.com">contact@wayfindertechpartners.com</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon" aria-hidden="true">🌐</span>
+              <div class="contact-detail-text">
+                <strong>Website</strong>
+                <a href="https://wayfindertechpartners.com">wayfindertechpartners.com</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon" aria-hidden="true">💼</span>
+              <div class="contact-detail-text">
+                <strong>LinkedIn</strong>
+                <a href="https://linkedin.com/company/wayfinder-tech-partners" target="_blank" rel="noopener">linkedin.com/company/wayfinder-tech-partners</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon" aria-hidden="true">⏱️</span>
+              <div class="contact-detail-text">
+                <strong>Response time</strong>
+                <span>Within one business day</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <h3>What happens next?</h3>
+            <ol style="padding-left:1.25rem; display:flex; flex-direction:column; gap:0.75rem; list-style:decimal;">
+              <li style="font-size:0.875rem; color:var(--color-text);">We review your message and reach out to schedule an intro call.</li>
+              <li style="font-size:0.875rem; color:var(--color-text);">We learn about your environment, team, and goals.</li>
+              <li style="font-size:0.875rem; color:var(--color-text);">We recommend a plan and walk you through what onboarding looks like.</li>
+              <li style="font-size:0.875rem; color:var(--color-text);">If it's a fit, we move into the precontract consultation period.</li>
+            </ol>
+          </div>
+
+          <div class="consult-note">
+            <p>
+              <strong>Heads up on consultation requirements:</strong><br/><br/>
+              A <strong>1-month precontract consultation</strong> is required before signing a Basic or Standard agreement.<br/><br/>
+              A <strong>3-month precontract consultation</strong> is required before signing a Premium agreement.<br/><br/>
+              This ensures we understand your environment and can make real commitments — not just promises.
+            </p>
+          </div>
+        </aside>
+
+      </div><!-- /.contact-layout -->
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.4)" stroke-width="2.2"/>
+            <path d="M18 31 A14 14 0 0 1 6.8 8.8" stroke="#2CB1BC" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <path d="M18 18 L13 28 L18 5 L23 28 Z" fill="#2CB1BC"/>
+            <path d="M18 18 L23 28 L18 5 Z" fill="rgba(255,255,255,0.6)"/>
+            <path d="M18 5 L19.8 3 L21.5 5 L19.8 7 Z" fill="#F59E0B"/>
+          </svg>
+          <div>
+            <span class="footer-brand-name">Wayfinder</span>
+            <span class="footer-brand-sub">Technology Partners</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Enterprise-grade IT management and cybersecurity for growing businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul role="list">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://linkedin.com/company/wayfinder-tech-partners" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul role="list">
+          <li><a href="services.html#basic">Basic</a></li>
+          <li><a href="services.html#standard">Standard</a></li>
+          <li><a href="services.html#premium">Premium</a></li>
+          <li><a href="compliance.html">Compliance</a></li>
+          <li><a href="compliance.html#compliance-finder">Compliance Finder</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get Started</h5>
+        <ul role="list">
+          <li><a href="contact.html">Free 30-Min Call</a></li>
+          <li><a href="contact.html">Request a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Wayfinder Technology Partners. All rights reserved.</p>
+      <nav class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
