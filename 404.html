@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Wayfinder Technology Partners</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #102A43;
+      color: #F3F4F6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      text-decoration: none;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .logo-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #F3F4F6;
+      line-height: 1.1;
+    }
+
+    .logo-sub {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #2CB1BC;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .error-code {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 800;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 2px #2CB1BC;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: #F3F4F6;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #9CA3AF;
+      max-width: 420px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #2CB1BC;
+      color: #102A43;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.875rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-home:hover {
+      background: #1D8A94;
+      color: #fff;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: #F59E0B;
+      border-radius: 2px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin-top: 3rem;
+    }
+
+    .nav-links a {
+      color: #6B7280;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2CB1BC;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="logo-wrap" aria-label="Wayfinder Technology Partners — Home">
+    <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="18" cy="18" r="14" stroke="rgba(255,255,255,0.4)" stroke-width="2.2"/>
+      <path d="M18 31 A14 14 0 0 1 6.8 8.8" stroke="#2CB1BC" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <path d="M18 18 L13 28 L18 5 L23 28 Z" fill="#2CB1BC"/>
+      <path d="M18 18 L23 28 L18 5 Z" fill="rgba(255,255,255,0.6)"/>
+      <path d="M18 5 L19.8 3 L21.5 5 L19.8 7 Z" fill="#F59E0B"/>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-name">Wayfinder</span>
+      <span class="logo-sub">Technology Partners</span>
+    </div>
+  </a>
+
+  <div class="error-code">404</div>
+  <div class="divider"></div>
+  <h1>Page Not Found</h1>
+  <p>Looks like this path leads off the map. The page you're looking for may have moved or doesn't exist.</p>
+
+  <a href="index.html" class="btn-home">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+    Back to Homepage
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+</body>
+</html>
